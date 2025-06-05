@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Educativa</title>
+    <link rel="stylesheet" href="itcode.css">
+    <script src="itcode.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .header {
+      background: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      flex: 1 1 300px;
+      background: #f4f4f4;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 600px) {
+      .header {
+        font-size: 1.2rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+    
+    <header>
+    <div class="logo">
+        <h1><img src="LogoITCA_Web.png" width="300" ><img src="itcode_logo.png" widht="300px" height="70px"></h1>
+    </div>
+            <a href="ITCODE-PROYECTO-FINAL.html" class="info">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                </svg>
+            </a>
+            
+
+            <!-- NUEVOS BOTONES EN LA PARTE SUPERIOR DERECHA -->
+    <div class="top-buttons">
+        <a href="pg3.pensum.html">
+        <button onclick="navegarA('Recursos')">Pensum</button>
+    </a>
+
+    
+        <div class="dropdown">
+          <button>Información
+            Software
+          </button>
+          <div class="dropdown-content">
+            <a href="pg4.info.basic.sof.html">Basica</a>
+            <a href="pg5.info.inter.sof.html">Intermedia</a>
+            <a href="pg6.info.avanz.sof.html">Avanzada</a>
+            
+          </div>
+        </div>
+  
+        <div class="dropdown">
+          <button>Información
+            Hardware
+          </button>
+          <div class="dropdown-content">
+            <a href="pg7.ifo.basic.har.html">Basica</a>
+            <a href="pg8.info.har.inter.html">Intermedia</a>
+            <a href="pg9.info.har.avanz.html">Avanzada</a>
+            
+          </div>
+        </div>
+        <div class="dropdown">
+            <button>Autoevaluaciones </button>
+            <div class="dropdown-content">
+                <a href="formSoftware.html">Software</a>
+              <a href="formHardware.html">Hardware</a>
+            </div>
+          </div>
+
+          <div class="dropdown">  <!-- recien agregado -->
+            <button>Cuestionarios </button>
+            <div class="dropdown-content">
+                <a href="cuestio_soft1.html">Software</a>
+                <a href="cuestio_soft2.html">Software</a>
+                <a href="cuestio_hardware1.html">Hardware</a>
+                <a href="cuestio_hardware2.html">Hardware</a>
+            </div>
+          </div>
+
+               <div class="dropdown">
+            <button>Testimonios </button>
+            <div class="dropdown-content">
+                <a href="testimonios.Soft.html">Software</a>
+              <a href="testimonio.Harw.html">Hardware</a>
+            </div>
+
+
+        
+      
+    </header>
+    
+    <section class="hero">
+        <h2>ITCODE TE HACE PERDER EL MIEDO</h2>
+        <button onclick="bienvenida()">Empieza ahora</button>
+    </section>
+
+    <div class="video-container">
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/v_F4ivxRUSc" 
+title="YouTube video bienvenida" frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+allowfullscreen></iframe>
+    </div>
+    
+    <section class="cursos">
+        <div class="curso">
+            <img src="https://images.pexels.com/photos/270488/pexels-photo-270488.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Software">
+            <h3>Curso de Software</h3>
+            <p>Aprende sobre Software.</p>
+            <a href="pg1.sof.html">
+            <button onclick="verCurso('Software')">Ver curso</button>
+            </a>
+        </div>
+        <div class="curso">
+            <img src="https://images.pexels.com/photos/2588757/pexels-photo-2588757.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Hardware">
+            <h3>Curso de Hardware</h3>
+            <p>Aprende sobre Hardware.</p>
+            <a href="pg2.har.html">
+            <button onclick="verCurso('Hardware')">Ver curso</button>
+        </a>
+        </div>
+    </section>
+               
+       <a href="mapeado.html" class="btn">MAPA DEL SITIO</a>
+
+
+           
+      
+            </div>
+
+    
+              
+           
+            </div>
+
+
+    <footer>
+        <p>© ITCODE haciendo de tu carrera una mejor experiencia.</p>
+    </footer>
+
+    <div id="modal" style="display: none;" class="modal-overlay">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModal()">×</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>

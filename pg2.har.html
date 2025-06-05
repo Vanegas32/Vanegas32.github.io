@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Videos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: rgba(84, 1, 0, 0.93);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap; /* Permite que los videos se ajusten si no caben */
+      justify-content: space-evenly; /* Alinea los videos de forma equitativa */
+      gap: 20px; /* Espacio entre los videos */
+      padding: 20px;
+    }
+    .video-card {
+      display: flex;
+      flex-direction: column; /* Los elementos dentro de la tarjeta están en columna */
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(149, 17, 15, 0.93);
+      width: 300px; /* Ancho de cada video */
+      transition: transform 0.3s;
+    }
+    .video-card:hover {
+      transform: scale(1.05); /* Efecto al pasar el cursor */
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%; /* Relación 16:9 */
+      height: 0;
+      overflow: hidden;
+      width: 100%;
+      border-bottom: 2px  rgba(229, 202, 0, 0.962);
+      box-shadow: 0 0 15px  rgba(149, 17, 15, 0.93);
+      border-radius: 5px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .video-info {
+      padding: 15px;
+    }
+    .video-info h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    .video-info p {
+      font-size: 1em;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    .home-icon svg {
+      position: absolute;
+      top: 40px;
+      left: 10px;
+      color:#ffffff;
+      width: 60px;
+      height: 40px;
+      padding: 7px;
+      margin-left: 15px;
+
+    }
+    .video-info .theme {
+      background-color:   rgba(149, 17, 15, 0.93);
+      color: white;
+      padding: 5px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    h3 {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Introducción a Hardware</h1>
+    <p>Aquí podrás ver diversos videos con su respectivo tema y descripción.</p>
+    <a href="ITCODE-PROYECTO-FINAL.html" class="home-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+    <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+    </svg>
+    </a>
+  </header>
+
+  <div class="container">
+    <!-- Video 1 -->
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe 
+          src="https://www.youtube.com/embed/w7GU-IYNsZE" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-info">
+        <h3>Video de Hardware 1</h3>
+        <p>Este video muestra Cómo crear particiones en Windows 10 y Windows 11.</p>
+        <span class="theme">Hardware</span>
+      </div>
+    </div>
+
+    <!-- Video 2 -->
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe 
+          src="https://www.youtube.com/embed/abKLLfMn-pI" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-info">
+        <h3>Video de Hardware 2</h3>
+        <p>Este video explica cómo funciona en bucle FOR en Python.</p>
+        <span class="theme">Hardware</span>
+      </div>
+    </div>
+
+    <!-- Video 3 -->
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe 
+          src="https://www.youtube.com/embed/0h_srypSheg" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-info">
+        <h3>Video de Hardware 3</h3>
+        <p>Este video de explicara como funciona en bucle While en Python.</p>
+        <span class="theme">Hardware</span>
+      </div>
+    </div>
+
+  </div>
+
+   <div class="container">
+    <!-- Video 4 -->
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe 
+          src="https://www.youtube.com/embed/UhK8TKkEoNI" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-info">
+        <h3>Video de Hardware 4</h3>
+        <p>Este video muestra la Estructura Condicional IF, ELSE, ELIF en Python</p>
+        <span class="theme">Hardware</span>
+      </div>
+    </div>
+
+    <!-- Video 5 -->
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe 
+          src="https://www.youtube.com/embed/trfV7HfCWyk" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-info">
+        <h3>Video de Hardware 5</h3>
+        <p>Este video explica cómo funciona el MATCH CASE EN PYTHON.</p>
+        <span class="theme">Hardware</span>
+      </div>
+    </div>
+
+    <!-- Video 6 -->
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe 
+          src="https://www.youtube.com/embed/AVmWeIbX2hU" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-info">
+        <h3>Video de Hardware 6</h3>
+        <p>Este video te enseñara lo que son los objetos  Iterables e iteradores en Python.</p>
+        <span class="theme">Hardware</span>
+      </div>
+    </div>
+
+  </div>
+
+  
+
+</body>
+</html>
+

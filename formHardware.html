@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hardware</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .contenedor {
+      background-color: rgba(0, 0, 0, 0.85);
+      border: 2px solid #cd9013;
+      border-radius: 10px;
+      padding: 30px;
+      width: 80%;
+      max-width: 700px;
+      box-shadow: 0 0 25px #cd9013;
+      color: #cd9013;
+      text-align: center;
+    }
+
+    #pregunta {
+      font-size: 1.4em;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #cd9013;
+      border-radius: 5px;
+      background-color: #111;
+      color: #fff;
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: #cd9013;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #cd9013;
+    }
+
+    #respuestaOpciones label {
+      display: block;
+      padding: 12px;
+      background-color: #1a1a1a;
+      color: #cd9013;
+      border: 1px solid #cd9013;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    #respuestaOpciones label:hover {
+      background-color: #2a2a2a;
+      transform: scale(1.02);
+    }
+
+    #respuestaOpciones input[type="radio"] {
+      transform: scale(1.2);
+      margin-right: 10px;
+      accent-color: #cd9013;
+    }
+
+    .alerta {
+      background-color: #cd9013;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      border-radius: 5px;
+      display: none;
+      margin-bottom: 20px;
+    }
+
+    .home-icon {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #ffffff;
+      width: 80px;
+      height: 80px;
+    }
+
+    #botonSiguiente {
+      display: flex;
+      justify-content: center;
+    }
+
+    #finalMensaje {
+      font-size: 1.6em;
+      text-align: center;
+      margin-top: 30px;
+      color: #cd9013;
+    }
+
+    #finalMensaje span {
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="ITCODE-PROYECTO-FINAL.html" class="home-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+      <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+    </svg>
+  </a>
+
+  <div class="contenedor">
+    <div id="pregunta">
+      <h2>¡Bienvenido futuro ingeniero/a o técnico/a en Hardware!</h2>
+      Presiona "Siguiente" para comenzar con la autoevaluación
+    </div>
+
+    <input type="text" id="respuestaTexto" placeholder="Escribe tu respuesta aquí" style="display: none;" />
+    <div id="respuestaOpciones" style="display: none;"></div>
+    <div id="alerta" class="alerta"></div>
+
+    <div id="botonSiguiente">
+      <button onclick="mostrarSiguiente(event)">Siguiente</button>
+    </div>
+
+    <div id="finalMensaje"></div>
+  </div>
+
+  <script>
+    const preguntas = [
+      { texto: "1. ¿Qué te motiva a estudiar la carrera de hardware?", tipo: "abierta" },
+      { texto: "2. ¿Qué es para ti el hardware?", tipo: "abierta" },
+      { texto: "3. ¿Has visto alguna vez el interior de una computadora?", tipo: "cerrada", opciones: ["Sí", "No"] },
+      { texto: "4. ¿Sabes para qué sirve el monitor?", tipo: "cerrada", opciones: ["Sí", "No", "No mucho"] },
+      { texto: "5. ¿Por qué crees que es importante conocer las partes del hardware?", tipo: "abierta" },
+      { texto: "6. ¿Puedes identificar alguna diferencia entre una laptop y una computadora de escritorio?", tipo: "cerrada", opciones: ["Sí", "No", "No mucho"] },
+      { texto: "7. ¿Qué función cumple el CPU (procesador) en una computadora?", tipo: "abierta" },
+      { texto: "8. ¿Conoces la función del teclado y del mouse?", tipo: "cerrada", opciones: ["Sí", "No", "No mucho"] },
+      { texto: "9. ¿Sabes conectar correctamente los cables de una computadora (energía, monitor, teclado, etc.)?", tipo: "cerrada", opciones: ["Sí", "No", "No mucho"] },
+      { texto: "10. Menciona al menos tres partes físicas de una computadora.", tipo: "abierta" }
+    ];
+
+    let indice = 0;
+    const respuestas = [];
+
+    function mostrarAlerta(mensaje) {
+      const alerta = document.getElementById("alerta");
+      alerta.textContent = mensaje;
+      alerta.style.display = "block";
+    }
+
+    function ocultarAlerta() {
+      document.getElementById("alerta").style.display = "none";
+    }
+
+    function mostrarSiguiente(event) {
+      event.preventDefault();
+      const input = document.getElementById("respuestaTexto");
+      const opcionesDiv = document.getElementById("respuestaOpciones");
+
+      if (indice > 0) {
+        const anterior = preguntas[indice - 1];
+        if (anterior.tipo === "abierta") {
+          const texto = input.value.trim();
+          if (texto === "") return mostrarAlerta("⚠️ Escribe una respuesta para continuar.");
+          respuestas.push(texto);
+        } else {
+          const seleccion = document.querySelector('input[name="opcion"]:checked');
+          if (!seleccion) return mostrarAlerta("⚠️ Selecciona una opción para continuar.");
+          respuestas.push(seleccion.value);
+        }
+        ocultarAlerta();
+      }
+
+      if (indice < preguntas.length) {
+        const actual = preguntas[indice];
+        document.getElementById("pregunta").textContent = actual.texto;
+        if (actual.tipo === "abierta") {
+          input.style.display = "block";
+          opcionesDiv.style.display = "none";
+          input.value = "";
+        } else {
+          opcionesDiv.innerHTML = actual.opciones.map(
+            op => `<label><input type="radio" name="opcion" value="${op}"> ${op}</label>`
+          ).join("");
+          opcionesDiv.style.display = "block";
+          input.style.display = "none";
+        }
+        indice++;
+      } else {
+        document.querySelector("button").style.display = "none";
+        input.style.display = "none";
+        opcionesDiv.style.display = "none";
+        document.getElementById("pregunta").textContent = "";
+        document.getElementById("finalMensaje").innerHTML = `
+          <span>🎉 ¡Felicidades haz completado la autoevaluación!</span>
+          <span>En hora buena, haz aprovado esta autoevaluación 👏</span>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

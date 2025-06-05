@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Página de Imágenes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: rgba(84, 1, 0, 0.93);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .home-icon svg {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color:#ffffff;
+      width: 35px;
+      height: 35px;
+      padding: 20px;
+      margin: 25px 10px 10px 25px;
+
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding: 40px 20px;
+    }
+    .image-card {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(159, 3, 0, 0.93);
+      max-width: 90%;
+      width: 800px;
+      text-align: center;
+    }
+    .image-card img {
+      width: 100%;
+      border-bottom: 2px solid #b4ab05;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .image-info {
+      padding: 15px;
+    }
+    .image-info h3 {
+      font-size: 1.5em;
+      color: white;
+      margin-bottom: 10px;
+    }
+    .image-info p {
+      color: white;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+    .theme {
+      background-color:  rgba(84, 1, 0, 0.93);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .double-image {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .double-image img {
+      width: 100%;
+      max-width: 380px;
+    }
+
+    /* Lightbox estilo */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border: 4px solid  #b4ab05;
+      border-radius: 10px;
+    }
+    .lightbox:active,
+    .lightbox:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pensum</h1>
+    <p>Conoce el organigrama y las materias de tu carrera.</p>
+        <a href="ITCODE-PROYECTO-FINAL.html" class="home-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+        <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+      </svg>
+    </a>
+  </header>
+
+  <div class="container">
+    <!-- Imagen 1 -->
+    <div class="image-card">
+      <img src="https://www.itca.edu.sv/wp-content/uploads/2024/12/Pensum_TDS_2025_1.jpg" alt="Descripción de la imagen 1" onclick="showLightbox(this.src)" />
+      <div class="image-info">
+        <h3>Software</h3>
+        <p>Conoce las materias de Software.</p>
+        <span class="theme">Software</span>
+      </div>
+    </div>
+
+    <!-- Imagen 2 y 3 en línea -->
+    <div class="image-card">
+      <div class="double-image">
+        <img src="https://www.itca.edu.sv/wp-content/uploads/2024/12/Pensum_HC2025_1.jpg" alt="Descripción de la imagen 2" onclick="showLightbox(this.src)" />
+        <img src="https://www.itca.edu.sv/wp-content/uploads/2024/12/Pensum_HC2025_2.jpg" alt="Descripción de la imagen 3" onclick="showLightbox(this.src)" />
+      </div>
+      <div class="image-info">
+        <h3>Hardware</h3>
+        <p>Conoce las materias de Hardware.</p>
+        <span class="theme">Hardware</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox (ventana emergente para imagen ampliada) -->
+  <div class="lightbox" id="lightbox" onclick="hideLightbox()">
+    <img id="lightbox-img" src="" alt="Imagen ampliada" />
+  </div>
+
+  <script>
+    function showLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = src;
+      lightbox.style.display = 'flex';
+    }
+
+    function hideLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
